@@ -101,6 +101,9 @@ h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; letter-sp
 .banner-l { font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
 .banner-v { font-family: var(--display); font-size: clamp(2.2rem, 4vw, 2.9rem); font-weight: 800; line-height: 1; }
 .banner-d { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--warn); }
+.banner-item.ref .banner-v { font-size: clamp(1.7rem, 3vw, 2.1rem); color: var(--faint); font-weight: 700; }
+.banner-item.cur .banner-l { color: var(--violet); }
+.banner-item.cur .banner-v { font-size: clamp(3.2rem, 6vw, 4.4rem); color: var(--violet); }
 .banner-note { width: 100%; text-align: center; font-size: .85rem; color: var(--muted); }
 
 /* month cards */
@@ -225,9 +228,9 @@ footer p + p { margin-top: 6px; opacity: .65; }
       <p class="lead">El trimestre cerró en 82%, cinco puntos por debajo del Q2. Julio cumplió completo y el cumplimiento bajó en agosto y septiembre.</p>
 
       <div class="banner">
-        <div class="banner-item"><div class="banner-l">Q2 2026</div><div class="banner-v">87%</div></div>
+        <div class="banner-item ref"><div class="banner-l">Q2 2026 · referencia</div><div class="banner-v">87%</div></div>
         <div class="banner-item"><div class="banner-d">−5pp</div></div>
-        <div class="banner-item"><div class="banner-l">Q3 2026</div><div class="banner-v c-warn">82%</div></div>
+        <div class="banner-item cur"><div class="banner-l">Q3 2026</div><div class="banner-v">82%</div></div>
       </div>
 
       <div class="months">

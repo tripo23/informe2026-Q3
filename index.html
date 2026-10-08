@@ -301,7 +301,7 @@ footer p + p { margin-top: 6px; opacity: .65; }
 
     <section>
       <h2>Tiempos de subida</h2>
-      <p class="lead">Ciclo completo de UAT a producción por tecnología, en días calendario. Base comparable: SP3 a SP6 completos.</p>
+      <p class="lead">Es el tiempo que pasa entre que algo queda listo en UAT y llega a los usuarios en producción. En el Q, cinco de seis tecnologías subieron a producción dentro de ±1 día de lo esperado. Android fue la excepción: tardó 3.25 días más y concentró los problemas de despliegue.</p>
       <div class="tw"><table>
         <thead><tr><th>Tecnología</th><th class="r">Teórico</th><th class="r">Real</th><th class="r">Desvío</th><th>Causas principales</th></tr></thead>
         <tbody>
@@ -314,10 +314,9 @@ footer p + p { margin-top: 6px; opacity: .65; }
         </tbody>
       </table></div>
       <div class="reads">
-        <p><b>Android</b> acumuló 14 días de desvío solo en SP5 y SP6, ambos en el despliegue. Las causas fueron técnicas (rollback, hotfixes, error 5002/Theo 11) más un gap de proceso en SP6: una versión salió sin revisión durante BRP.</p>
-        <p><b>STV y ATV</b> llegaron en tiempo o antes de forma consistente. Son las tecnologías más predecibles del Q.</p>
-        <p><b>CSDK</b> fue un bloqueante transversal en SP4 y afectó a WEB, STV, iOS y Android en distinto grado.</p>
-        <p><b>iOS</b> tiene un techo estructural: la aprobación de Apple suma cerca de una semana que no se controla internamente.</p>
+        <p><b>Lo que funcionó:</b> ATV y STV subieron en tiempo o antes, de forma consistente. Para producto, eso significa poder comprometer fechas de salida en esas plataformas con bastante confianza.</p>
+        <p><b>Lo que hay que mirar:</b> Android acumuló 14 días de desvío solo en SP5 y SP6, ambos en el despliegue. Hubo causas técnicas (rollback, hotfixes, error 5002/Theo 11) y un gap de proceso en SP6: una versión salió sin revisión durante BRP. Es el mismo aprendizaje que figura más abajo.</p>
+        <p><b>Lo que no controlamos:</b> la aprobación de Apple suma cerca de una semana en iOS. Es un techo estructural y conviene planificar con ese margen. WEB, STV, iOS y Android también se vieron afectadas por CSDK, que fue un bloqueante transversal en SP4.</p>
       </div>
     </section>
 

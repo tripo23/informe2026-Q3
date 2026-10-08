@@ -1,0 +1,394 @@
+<title>Cierre Q3 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: contenedor central tipo informe de cierre Q2: header oscuro, stats hero, secciones por tema con tarjetas. */
+:root {
+  --page: #eef2f6;
+  --surface: #ffffff;
+  --soft: #f6f8fb;
+  --line: #e3e7ee;
+  --ink: #16171d;
+  --ink-2: #2b2d36;
+  --muted: #5f6674;
+  --faint: #8b92a0;
+  --teal: #0fb08a;
+  --teal-bg: #e4f7f1;
+  --violet: #7c4fe0;
+  --violet-bg: #efe9fd;
+  --good: #0c9b6e;
+  --warn: #c77a06;
+  --warn-bg: #fdf1dc;
+  --bad: #d63b3b;
+  --bad-bg: #fde8e8;
+  --good-bg: #e2f6ee;
+  --orange: #e8782a;
+  --orange-bg: #fff1e6;
+  --head-bg: #16171d;
+  --head-fg: #ffffff;
+  --pod-a: #7c4fe0;
+  --pod-b: #9b7bf0;
+  --cyc: #EF9F27; --dispo: #378ADD; --pb: #1D9E75; --oyo: #D4537E; --core: #7F77DD; --host: #888780;
+  --display: 'Sora', system-ui, sans-serif;
+  --body: 'Inter', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0d0e12; --surface: #17181f; --soft: #1e2029; --line: #2a2d38;
+    --ink: #f1f2f6; --ink-2: #d6d8e0; --muted: #a2a7b4; --faint: #7d8392;
+    --teal: #2fd3ab; --teal-bg: #12302a; --violet: #a98af5; --violet-bg: #2a2147;
+    --good: #35c796; --good-bg: #12302a; --warn: #f0a63a; --warn-bg: #36280f;
+    --bad: #f06a6a; --bad-bg: #3a1a1c; --orange: #f59a5c; --orange-bg: #35220f;
+    --head-bg: #0a0b0e; --head-fg: #ffffff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0e12; --surface: #17181f; --soft: #1e2029; --line: #2a2d38;
+  --ink: #f1f2f6; --ink-2: #d6d8e0; --muted: #a2a7b4; --faint: #7d8392;
+  --teal: #2fd3ab; --teal-bg: #12302a; --violet: #a98af5; --violet-bg: #2a2147;
+  --good: #35c796; --good-bg: #12302a; --warn: #f0a63a; --warn-bg: #36280f;
+  --bad: #f06a6a; --bad-bg: #3a1a1c; --orange: #f59a5c; --orange-bg: #35220f;
+  --head-bg: #0a0b0e; --head-fg: #ffffff;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--page); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; padding-inline: 16px; padding-block: 28px 48px; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; background: var(--surface); border-radius: 20px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.07); }
+
+header { background: var(--head-bg); color: var(--head-fg); padding: 48px clamp(20px, 5vw, 56px) 34px; position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -70px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: var(--violet); opacity: .18; }
+header > * { position: relative; }
+h1 { font-family: var(--display); font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; margin-bottom: 14px; }
+.sub { font-size: clamp(1rem, 2vw, 1.2rem); opacity: .9; }
+.meta { margin-top: 20px; font-size: .82rem; opacity: .7; letter-spacing: .02em; }
+
+/* podcast */
+.pod { background: linear-gradient(135deg, var(--pod-a) 0%, var(--pod-b) 100%); color: #fff; padding: 28px clamp(20px, 5vw, 56px); }
+.pod-row { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.pod-ic { width: 48px; height: 48px; flex-shrink: 0; }
+.pod-text { flex: 1 1 280px; min-width: 0; max-width: 620px; }
+.pod-t { font-family: var(--display); font-size: clamp(1.25rem, 2.5vw, 1.7rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 6px; }
+.pod-s { font-size: .95rem; opacity: .95; }
+.pod-w { font-size: .75rem; opacity: .7; font-style: italic; margin-top: 12px; }
+.pod-btn { background: #fff; color: #6a3fd0; font-family: var(--display); font-weight: 700; font-size: 1rem; padding: 13px 28px; border: 0; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.18); white-space: nowrap; }
+.pod-btn:hover { background: #f4f0ff; }
+.pod-btn:focus-visible, .pod-speed:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.pod-player { margin: 22px auto 0; max-width: 640px; padding: 16px 18px; background: rgba(255,255,255,.96); border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.pod-player audio { width: 100%; height: 44px; display: block; }
+.pod-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.pod-hint { color: #5a3cb0; font-size: .8rem; }
+.pod-speed { background: #efe9fd; color: #5a3cb0; border: 0; border-radius: 20px; padding: 4px 14px; font-size: .8rem; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; }
+
+.hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; padding: 32px clamp(20px, 5vw, 56px); background: var(--soft); border-bottom: 1px solid var(--line); }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; text-align: center; min-width: 0; }
+.stat-v { font-family: var(--display); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; line-height: 1; color: var(--teal); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.stat-l { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.stat-d { margin-top: 6px; font-size: .85rem; color: var(--faint); }
+
+.content { padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: 56px; }
+section { min-width: 0; }
+h2 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 8px; text-wrap: balance; }
+h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 14px; }
+.lead { color: var(--muted); max-width: 70ch; margin-bottom: 24px; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* comparison banner */
+.banner { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 24px; padding: 28px 32px; border: 2px solid var(--violet); border-radius: 16px; background: var(--violet-bg); margin-bottom: 28px; }
+.banner-item { text-align: center; }
+.banner-l { font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+.banner-v { font-family: var(--display); font-size: clamp(2.2rem, 4vw, 2.9rem); font-weight: 800; line-height: 1; }
+.banner-d { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--warn); }
+.banner-note { width: 100%; text-align: center; font-size: .85rem; color: var(--muted); }
+
+/* month cards */
+.months { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.month { border: 1px solid var(--line); border-radius: 14px; padding: 22px; background: var(--surface); min-width: 0; }
+.month-t { font-family: var(--display); font-weight: 700; font-size: 1rem; margin-bottom: 14px; }
+.month-v { font-family: var(--display); font-size: 2.3rem; font-weight: 800; line-height: 1; }
+.month-s { color: var(--muted); font-size: .85rem; margin: 6px 0 14px; }
+.bar { height: 8px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; border-radius: 6px; }
+.c-good { color: var(--good); } .c-warn { color: var(--warn); } .c-bad { color: var(--bad); }
+.f-good { background: var(--good); } .f-warn { background: var(--warn); } .f-bad { background: var(--bad); }
+
+/* team cards */
+.teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.team { border: 1px solid var(--line); border-top: 4px solid var(--c, var(--line)); border-radius: 14px; padding: 24px 22px; background: var(--surface); min-width: 0; }
+.team-n { font-family: var(--display); font-weight: 700; margin-bottom: 14px; font-size: 1rem; }
+.team-v { font-family: var(--display); font-size: 2.6rem; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+.team-q2 { font-size: .83rem; color: var(--muted); margin-bottom: 16px; }
+.delta { font-weight: 700; margin-left: 6px; }
+.team-s { display: flex; gap: 22px; margin-top: 16px; font-size: .85rem; color: var(--muted); }
+.team-s b { color: var(--ink); font-size: 1rem; }
+
+/* highlights */
+.logros { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.logro { border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: var(--surface); min-width: 0; }
+.logro-kr { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--violet); font-weight: 600; margin-bottom: 10px; }
+.logro-t { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
+.logro p { color: var(--muted); font-size: .95rem; }
+.logro a { color: var(--violet); font-weight: 600; text-decoration: none; border-bottom: 1px dashed currentColor; }
+.callout { margin-top: 18px; padding: 14px 18px; border-radius: 10px; background: var(--teal-bg); color: var(--ink-2); font-size: .93rem; }
+
+/* tables */
+.tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; padding: 12px 16px; background: var(--soft); border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+th.r, td.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--faint); }
+td a:hover { color: var(--violet); border-bottom-color: var(--violet); }
+.pill { display: inline-block; font-size: .75rem; font-weight: 600; padding: 2px 10px; border-radius: 20px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.p-good { background: var(--good-bg); color: var(--good); } .p-warn { background: var(--warn-bg); color: var(--warn); } .p-bad { background: var(--bad-bg); color: var(--bad); }
+tr.total td { font-weight: 700; background: var(--soft); }
+
+/* carries */
+.carries { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+.carry { border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 12px; padding: 20px; background: var(--surface); min-width: 0; }
+.carry-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; }
+.carry-team { font-family: var(--display); font-weight: 700; }
+.carry-n { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--orange); background: var(--orange-bg); border-radius: 6px; padding: 3px 9px; white-space: nowrap; }
+.carry ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.carry li { font-size: .92rem; }
+.carry li a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--faint); }
+.carry li a:hover { color: var(--violet); border-bottom-color: var(--violet); }
+.carry li span { display: block; color: var(--muted); font-size: .86rem; margin-top: 2px; }
+
+/* readings */
+.reads { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; max-width: 80ch; }
+.reads p { padding-left: 16px; border-left: 3px solid var(--violet); color: var(--ink-2); font-size: .95rem; }
+.note { font-size: .88rem; color: var(--muted); max-width: 80ch; margin-bottom: 18px; padding: 14px 18px; background: var(--soft); border-radius: 10px; }
+
+/* learnings */
+.learn { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.learn div { padding: 22px; border: 1px solid var(--line); border-radius: 12px; min-width: 0; background: var(--surface); }
+.learn b { display: block; font-family: var(--display); font-size: 1rem; margin-bottom: 8px; }
+.learn p { color: var(--muted); font-size: .93rem; }
+
+footer { background: var(--head-bg); color: var(--head-fg); padding: 30px 20px; text-align: center; font-size: .85rem; }
+footer p { opacity: .85; }
+footer p + p { margin-top: 6px; opacity: .65; }
+
+@media (max-width: 640px) {
+  body { padding-block: 16px 32px; }
+  .carries { grid-template-columns: 1fr; }
+  .logros, .learn { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Cierre Q3 2026</h1>
+    <div class="sub">Flow · Resultados del Quarter</div>
+    <div class="meta">Flow Prod Ops · Octubre 2026</div>
+  </header>
+
+  <div class="pod">
+    <div class="pod-row">
+      <svg class="pod-ic" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="17" y="5" width="14" height="25" rx="7"/><path d="M10 22c0 8 6 14 14 14s14-6 14-14M24 36v7M17 43h14"/></svg>
+      <div class="pod-text">
+        <div class="pod-t">Escuchá el podcast del Q3</div>
+        <div class="pod-s">Un debate de 4 minutos sobre los logros, los números del trimestre y lo que quedó sin cerrar.</div>
+        <div class="pod-w">Este podcast fue generado con IA y puede contener errores.</div>
+      </div>
+      <button class="pod-btn" id="podBtn" type="button" aria-expanded="false" aria-controls="podPlayer">Escuchar ahora ▶</button>
+    </div>
+    <div class="pod-player" id="podPlayer" hidden>
+      <audio id="podAudio" controls preload="metadata">
+        <source src="podcast_q3_2026.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+      </audio>
+      <div class="pod-bar">
+        <span class="pod-hint">Podés pausar o adelantar mientras seguís leyendo.</span>
+        <button class="pod-speed" id="podSpeed" type="button" aria-label="Cambiar velocidad de reproducción">1.25×</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="stat"><div class="stat-v">88</div><div class="stat-l">Iniciativas comprometidas</div><div class="stat-d">6 equipos</div></div>
+    <div class="stat"><div class="stat-v" style="color: var(--violet)">82%</div><div class="stat-l">Cumplimiento</div><div class="stat-d">72 de 88 en Done</div></div>
+    <div class="stat"><div class="stat-v" style="color: var(--orange)">16</div><div class="stat-l">Carry a Q4</div><div class="stat-d">iniciativas sin cerrar</div></div>
+    <div class="stat"><div class="stat-v">3</div><div class="stat-l">Equipos sobre 90%</div><div class="stat-d">Host, Dispositivos, Catálogo</div></div>
+  </div>
+
+  <div class="content">
+
+    <section>
+      <h2>Cumplimiento del Q3</h2>
+      <p class="lead">El trimestre cerró en 82%, cinco puntos por debajo del Q2. Julio cumplió completo y el cumplimiento bajó en agosto y septiembre.</p>
+
+      <div class="banner">
+        <div class="banner-item"><div class="banner-l">Q2 2026</div><div class="banner-v">87%</div></div>
+        <div class="banner-item"><div class="banner-d">−5pp</div></div>
+        <div class="banner-item"><div class="banner-l">Q3 2026</div><div class="banner-v c-warn">82%</div></div>
+      </div>
+
+      <div class="months">
+        <div class="month"><div class="month-t">Mes 1 · Julio</div><div class="month-v c-good">100%</div><div class="month-s">13 de 13 en Done</div><div class="bar"><i class="f-good" style="width:100%"></i></div></div>
+        <div class="month"><div class="month-t">Mes 2 · Agosto</div><div class="month-v c-warn">81%</div><div class="month-s">13 de 16 en Done</div><div class="bar"><i class="f-warn" style="width:81%"></i></div></div>
+        <div class="month"><div class="month-t">Mes 3 · Septiembre</div><div class="month-v c-warn">78%</div><div class="month-s">46 de 59 en Done</div><div class="bar"><i class="f-warn" style="width:78%"></i></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cumplimiento por equipo</h2>
+      <p class="lead">Host, Dispositivos y Catálogo cerraron arriba del 90%. Core cerró en 75% y Oferta y Onboarding en 60%.</p>
+      <div class="teams">
+        <div class="team" style="--c: var(--host)"><div class="team-n">Host</div><div class="team-v c-good">100%</div><div class="team-q2">Q2: 100% <span class="delta">0pp</span></div><div class="bar"><i class="f-good" style="width:100%"></i></div><div class="team-s"><div>Done <b>6</b></div><div>Total <b>6</b></div></div></div>
+        <div class="team" style="--c: var(--dispo)"><div class="team-n">Dispositivos</div><div class="team-v c-good">94%</div><div class="team-q2">Q2: 90% <span class="delta c-good">+4pp</span></div><div class="bar"><i class="f-good" style="width:94%"></i></div><div class="team-s"><div>Done <b>17</b></div><div>Total <b>18</b></div></div></div>
+        <div class="team" style="--c: var(--cyc)"><div class="team-n">Catálogo y Contenido</div><div class="team-v c-good">92%</div><div class="team-q2">Q2: 100% <span class="delta c-bad">−8pp</span></div><div class="bar"><i class="f-good" style="width:92%"></i></div><div class="team-s"><div>Done <b>13</b></div><div>Total <b>14</b></div></div></div>
+        <div class="team" style="--c: var(--pb)"><div class="team-n">Playback</div><div class="team-v c-warn">83%</div><div class="team-q2">Q2: 84% <span class="delta c-bad">−1pp</span></div><div class="bar"><i class="f-warn" style="width:83%"></i></div><div class="team-s"><div>Done <b>15</b></div><div>Total <b>18</b></div></div></div>
+        <div class="team" style="--c: var(--core)"><div class="team-n">Plataforma Core</div><div class="team-v c-warn">75%</div><div class="team-q2">Q2: 92% <span class="delta c-bad">−17pp</span></div><div class="bar"><i class="f-warn" style="width:75%"></i></div><div class="team-s"><div>Done <b>9</b></div><div>Total <b>12</b></div></div></div>
+        <div class="team" style="--c: var(--oyo)"><div class="team-n">Oferta y Onboarding</div><div class="team-v c-bad">60%</div><div class="team-q2">Q2: 84% <span class="delta c-bad">−24pp</span></div><div class="bar"><i class="f-bad" style="width:60%"></i></div><div class="team-s"><div>Done <b>12</b></div><div>Total <b>20</b></div></div></div>
+      </div>
+      <div class="callout">TMA y STV concentraron una parte creciente de la capacidad de los equipos durante el Q3 y afectaron el cumplimiento en varios frentes.</div>
+    </section>
+
+    <section>
+      <h2>Lo que logramos en Q3</h2>
+      <div class="logros">
+        <div class="logro"><div class="logro-kr">KR 2.3 · MTTR</div><div class="logro-t"><span class="dot" style="--c: var(--core)"></span>Core</div><p>Avanzó en el apagado de M10 con la migración de grabaciones a Full M11. Puso Cloud Head End en producción con observabilidad e infraestructura Post-M11 con CDN propia.</p></div>
+        <div class="logro"><div class="logro-kr">KR 2.2 CES · KR 2.3 MTTR</div><div class="logro-t"><span class="dot" style="--c: var(--host)"></span>Host</div><p>Implementó la encuesta CES en Android TV OTT y STB, completó la eliminación de dependencias de M10 y lanzó los primeros componentes del sistema de diseño. Avances en STV.</p></div>
+        <div class="logro"><div class="logro-kr">KR 1.2 Stickiness · KR 2.2 CES</div><div class="logro-t"><span class="dot" style="--c: var(--cyc)"></span>Catálogo y Contenido</div><p>Lanzó XP Deportes (fútbol argentino y Equipo de Interés), Sorpréndeme v2.1, Reminders con más puntos de entrada, mejoras en Mi Flow y AutoPlay en la Tira en Vivo. Avances en STV.</p></div>
+        <div class="logro"><div class="logro-kr">KR 2.2 CES · KR 2.3 MTTR</div><div class="logro-t"><span class="dot" style="--c: var(--oyo)"></span>Oferta y Onboarding</div><p>Completó el rediseño de Mi Cuenta en sus tres variantes: Mobile (con CMS para administrar suscripciones), Web y TVs.</p></div>
+        <div class="logro"><div class="logro-kr">KR 2.1 NPS · KR 2.3 MTTR</div><div class="logro-t"><span class="dot" style="--c: var(--pb)"></span>Playback</div><p>Desplegó nuevas señales en la nube, dejó lista la herramienta de Autodiagnóstico STV (la experiencia queda para Q4) y sumó soporte de Chromecast en Android e iOS.</p></div>
+        <div class="logro"><div class="logro-kr">KR 1.1 Parque · KR 2.1 NPS · KR 2.2 CES</div><div class="logro-t"><span class="dot" style="--c: var(--dispo)"></span>Dispositivos</div><p>Cerró la primera ronda de homologación TMA, sumó Búsqueda Federada en Roku, la integración de Paramount+ en ATV y el despliegue SMP en decos ZTE.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Carries a Q4</h2>
+      <p class="lead">Las 16 iniciativas que no cerraron en Q3 y siguen en Q4, con los cambios de alcance y las despriorizaciones que lo explican.</p>
+      <div class="carries">
+        <div class="carry"><div class="carry-h"><div class="carry-team">Core</div><div class="carry-n">3 ítems</div></div><ul>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2045" target="_blank" rel="noopener">Apagado M10 · Migración VMX a Full M11</a><span>29 días de atraso</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2044" target="_blank" rel="noopener">Apagado M10 · Migración ingesta a Full M11</a><span>9 días de atraso</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2050" target="_blank" rel="noopener">Infra Post-M11 · Normalización post Mundial</a><span>Blocked</span></li>
+        </ul></div>
+        <div class="carry"><div class="carry-h"><div class="carry-team">Oferta y Onboarding</div><div class="carry-n">8 ítems</div></div><ul>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1980" target="_blank" rel="noopener">Perfiles</a><span>Carry confirmado</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1985" target="_blank" rel="noopener">Refresh Packs STV</a><span>ATV hecho, STV pendiente</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1974" target="_blank" rel="noopener">Centro de Notificaciones</a><span>Cancelado en Q3 para priorizar Perfiles</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1984" target="_blank" rel="noopener">Experiencia unificada de contratación</a><span>Despriorizado por Perfiles</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1977" target="_blank" rel="noopener">Login Web</a><span>Despriorizado por Perfiles</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2010" target="_blank" rel="noopener">Regla 30d / Fx1D</a><span>No avanzó, depende de BSS</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2009" target="_blank" rel="noopener">Mejora en estados de Fx1D</a><span>In Progress</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1987" target="_blank" rel="noopener">Refactor de Router mobile Android</a><span>Prioritized</span></li>
+        </ul></div>
+        <div class="carry"><div class="carry-h"><div class="carry-team">Playback</div><div class="carry-n">3 ítems</div></div><ul>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1850" target="_blank" rel="noopener">Señales en la nube · Funcionamiento total + Integración Fronts</a><span>Cambio de alcance por emergentes de infra</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2028" target="_blank" rel="noopener">Señales en la nube · Validación go/no-go de infraestructura</a><span>In Progress, 39 días de atraso</span></li>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2038" target="_blank" rel="noopener">Upgrade CDN Ateme · Parte 1</a><span>Q3 comprometió el 30% del upgrade. Finalización total en la primera semana de noviembre</span></li>
+        </ul></div>
+        <div class="carry"><div class="carry-h"><div class="carry-team">Catálogo y Contenido</div><div class="carry-n">1 ítem</div></div><ul>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-2026" target="_blank" rel="noopener">Adaptación de agenda deportiva a más competiciones</a><span>Carry</span></li>
+        </ul></div>
+        <div class="carry"><div class="carry-h"><div class="carry-team">Dispositivos</div><div class="carry-n">1 ítem</div></div><ul>
+          <li><a href="https://tecocloud.atlassian.net/browse/FPR-1990" target="_blank" rel="noopener">Silent Reboot Linux</a><span>In Progress</span></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tiempos de subida</h2>
+      <p class="lead">Ciclo completo de UAT a producción por tecnología, en días calendario. Base comparable: SP3 a SP6 completos.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Tecnología</th><th class="r">Teórico</th><th class="r">Real</th><th class="r">Desvío</th><th>Causas principales</th></tr></thead>
+        <tbody>
+          <tr><td><b>ATV STB</b></td><td class="r">13.75</td><td class="r">12.75</td><td class="r"><span class="pill p-good">−1.0</span></td><td>Bugs bloqueantes, Legion Teco, bajo volumen, rollout controlado</td></tr>
+          <tr><td><b>ATV OTT</b></td><td class="r">13.75</td><td class="r">12.75</td><td class="r"><span class="pill p-good">−1.0</span></td><td>Playback/easylogin, bajo tráfico, parche de sesión infinita</td></tr>
+          <tr><td><b>STV</b></td><td class="r">8.25</td><td class="r">8.0</td><td class="r"><span class="pill p-good">0.0</span></td><td>Validación EBVS, bugs de Playback y Host, Catálogo</td></tr>
+          <tr><td><b>iOS</b></td><td class="r">11.25</td><td class="r">12.0</td><td class="r"><span class="pill p-warn">+0.75</span></td><td>Aprobación de Apple, mockeo CSDK, warnings de Startup/Crashes, fix de reminders</td></tr>
+          <tr><td><b>WEB</b></td><td class="r">7.0</td><td class="r">7.75</td><td class="r"><span class="pill p-warn">+1.0</span></td><td>CSDK, caché/Catálogo, bloqueos en UAT</td></tr>
+          <tr><td><b>Android</b></td><td class="r">9.25</td><td class="r">12.5</td><td class="r"><span class="pill p-bad">+3.25</span></td><td>Theo 11, error 5002, rollback, hotfix de Playback, falta de revisión BRP</td></tr>
+        </tbody>
+      </table></div>
+      <div class="reads">
+        <p><b>Android</b> acumuló 14 días de desvío solo en SP5 y SP6, ambos en el despliegue. Las causas fueron técnicas (rollback, hotfixes, error 5002/Theo 11) más un gap de proceso en SP6: una versión salió sin revisión durante BRP.</p>
+        <p><b>STV y ATV</b> llegaron en tiempo o antes de forma consistente. Son las tecnologías más predecibles del Q.</p>
+        <p><b>CSDK</b> fue un bloqueante transversal en SP4 y afectó a WEB, STV, iOS y Android en distinto grado.</p>
+        <p><b>iOS</b> tiene un techo estructural: la aprobación de Apple suma cerca de una semana que no se controla internamente.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Calidad: bugs vs. historias</h2>
+      <p class="lead">Aplica a los equipos que desarrollan en Flow. Core y Dispositivos desarrollan fuera de la plataforma.</p>
+      <p class="note">El ratio historias por bug no dice si algo salió bien o mal. Muestra dónde puso el foco cada equipo: ratio alto, más tiempo cerrando historias; ratio bajo, más tiempo resolviendo bugs.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Stream</th><th class="r">Historias</th><th class="r">Bugs</th><th class="r">Ratio hist/bug</th><th>Lectura</th></tr></thead>
+        <tbody>
+          <tr><td><b>OyO</b></td><td class="r">336</td><td class="r">86</td><td class="r"><span class="pill p-good">3.91</span></td><td>Foco en entrega de historias</td></tr>
+          <tr><td><b>CyC</b></td><td class="r">457</td><td class="r">130</td><td class="r"><span class="pill p-good">3.52</span></td><td>Foco en entrega de historias</td></tr>
+          <tr><td><b>Host</b></td><td class="r">126</td><td class="r">41</td><td class="r"><span class="pill p-good">3.07</span></td><td>Foco en entrega de historias</td></tr>
+          <tr><td><b>Playback</b></td><td class="r">234</td><td class="r">158</td><td class="r"><span class="pill p-bad">1.48</span></td><td>Foco en resolución de bugs</td></tr>
+          <tr class="total"><td>Total Q3</td><td class="r">1,196</td><td class="r">415</td><td class="r">2.88</td><td></td></tr>
+        </tbody>
+      </table></div>
+      <div class="reads">
+        <p><b>Playback</b> tuvo el ratio más bajo del Q (1.48). Dedicó una parte grande de su tiempo a bugs, en línea con los hotfixes, rollbacks y desvíos de despliegue en Android.</p>
+        <p><b>OyO, CyC y Host</b> priorizaron la entrega de historias sobre la resolución de bugs. Si el foco del Q era avanzar iniciativas, el ratio refleja esa decisión.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Aprendizajes del Q</h2>
+      <div class="learn">
+        <div><b>TMA y STV</b><p>Absorbieron más capacidad de la planificada y afectaron el cumplimiento en varios equipos.</p></div>
+        <div><b>Despriorizaciones en OyO</b><p>Hubo varias a favor de Perfiles. El FPR no reflejó esos movimientos en tiempo real y eso generó ruido en el seguimiento.</p></div>
+        <div><b>Cambios de alcance en Playback</b><p>Ajustó alcances por condiciones emergentes y mantuvo buena comunicación con la mesa.</p></div>
+        <div><b>Trazabilidad FPR a épicas</b><p>El vínculo no estuvo completo en todos los equipos. Dos FPRs quedaron sin tag Q3 hasta el cierre.</p></div>
+        <div><b>Revisión previa en Android</b><p>Necesita un proceso más robusto antes del despliegue. SP6 mostró que saltear la revisión BRP cuesta días.</p></div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Flow Prod Ops · Product Operations</p>
+    <p>Octubre 2026</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var btn = document.getElementById('podBtn');
+  var box = document.getElementById('podPlayer');
+  var audio = document.getElementById('podAudio');
+  var speedBtn = document.getElementById('podSpeed');
+  var speeds = [1.25, 1.5, 1];
+  var idx = 0;
+  function applySpeed() {
+    audio.defaultPlaybackRate = speeds[idx];
+    audio.playbackRate = speeds[idx];
+    speedBtn.textContent = String(speeds[idx]).replace(/\.0$/, '') + '×';
+  }
+  applySpeed();
+  audio.addEventListener('loadedmetadata', applySpeed);
+  btn.addEventListener('click', function () {
+    if (box.hidden) {
+      box.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      btn.textContent = 'Ocultar player';
+      applySpeed();
+      var p = audio.play();
+      if (p && p.catch) p.catch(function () {});
+    } else {
+      audio.pause();
+      box.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Escuchar ahora ▶';
+    }
+  });
+  speedBtn.addEventListener('click', function () {
+    idx = (idx + 1) % speeds.length;
+    applySpeed();
+  });
+})();
+</script>
